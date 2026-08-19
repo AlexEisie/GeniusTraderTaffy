@@ -1,0 +1,31 @@
+services:
+  nfi:
+    image: freqtradeorg/freqtrade:stable
+    restart: unless-stopped
+    container_name: ft-nfi
+    volumes:
+      - "/opt/freqtrade/user_data:/freqtrade/user_data"
+    ports:
+      - "127.0.0.1:8082:8080"
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/nfi.log
+      --db-url sqlite:////freqtrade/user_data/nfi_dry.sqlite
+      --config /freqtrade/user_data/deploy/config_nfi.json
+      --strategy NostalgiaForInfinityX7
+      --strategy-path /freqtrade/user_data/strategies/nfi
+
+  pp2:
+    image: freqtradeorg/freqtrade:stable
+    restart: unless-stopped
+    container_name: ft-pp2
+    volumes:
+      - "/opt/freqtrade/user_data:/freqtrade/user_data"
+    ports:
+      - "127.0.0.1:8083:8080"
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/pp2.log
+      --db-url sqlite:////freqtrade/user_data/pp2_dry.sqlite
+      --config /freqtrade/user_data/deploy/config_pp2.json
+      --strategy PanicPounce2

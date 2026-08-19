@@ -1,0 +1,25 @@
+# secrets & live credentials — never commit
+.secrets/
+freqtrade/deploy/config_nfi.json
+freqtrade/deploy/config_pp2.json
+freqtrade/deploy/daily_report.sh
+
+# runtime data & artifacts (large/binary, regenerated locally or live on server)
+data/
+backtests/
+logs/
+*.sqlite
+*.sqlite-journal
+*.log
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
